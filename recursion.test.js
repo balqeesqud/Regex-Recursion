@@ -1,25 +1,21 @@
 
-  
 function division(number, dividedBy) {
   if (dividedBy === 0) {
-    return 0; 
+    return 0;
   }
-  let z = 0;
-  let x = Math.abs(number);
-  let y = Math.abs(dividedBy);
 
-  while (x >= y) {
-    x = x-y;
-    z++;
+  if (number < dividedBy) {
+    return 0;
   }
+
   if ((number < 0 && dividedBy > 0) || (number > 0 && dividedBy < 0)) {
-    z = -z;
+    return -division(-number, Math.abs(dividedBy));
   }
 
-  return z;
-
+  return 1 + division(number - Math.abs(dividedBy), Math.abs(dividedBy));
 }
-//division(number,dividedBy);
+// division(9,3);
+
 
 function pow(x, n) {
   if (n === 0) {
@@ -41,8 +37,6 @@ function pow(x, n) {
 //console.log(pow(x,n))     
 
 function fibonacci(n) {
-    // Write you logic here.
-       
   if (n === 0) {
     return 0;
   }
@@ -51,16 +45,7 @@ function fibonacci(n) {
     return 1;
   }
 
-  let fMinusTwo = 0;
-  let fMinusOne = 1;
-  let fibNTH = 0;
-
-  for (let i = 2; i <= n; i++) {
-    fibNTH = fMinusOne + fMinusTwo;
-    fMinusTwo = fMinusOne;
-    fMinusOne = fibNTH;
-  }
-return fibNTH;
+  return fibonacci(n - 1) + fibonacci(n - 2);
 }
 //console.log(fibonacci(n)); 
 
